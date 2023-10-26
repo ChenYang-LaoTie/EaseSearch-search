@@ -1,9 +1,9 @@
-index-prefix: ${searchsystem:openeuler_test}
+index-prefix: ${indexprefix:openeuler_test}
 
 elasticsearch:
-  host: ${eshost:159.138.10.226}
-  username: ${esusername:admin}
-  password: ${espassword:vDgCZzS%DfppX6tW}
+  host: ${eshost}
+  username: ${esusername}
+  password: ${espassword}
   port: ${esport:9200}
 
 server:
