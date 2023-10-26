@@ -41,3 +41,5 @@ ENV NO_ID_USER=anonymous
 EXPOSE 8080
 
 USER easysearch
+
+CMD java -jar ${WORKSPACE}/target/EaseSearch-search-0.0.1-SNAPSHOT.jar --spring.config.location=${APPLICATION_PATH}
