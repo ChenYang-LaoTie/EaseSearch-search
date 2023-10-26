@@ -1,0 +1,10 @@
+index-prefix: ${searchsystem:openeuler_test}
+
+elasticsearch:
+  host: ${eshost:159.138.10.226}
+  username: ${esusername:admin}
+  password: ${espassword:vDgCZzS%DfppX6tW}
+  port: ${esport:9200}
+
+server:
+  port: 8080
