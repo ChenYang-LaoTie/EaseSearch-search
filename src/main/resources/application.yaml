@@ -8,7 +8,7 @@ elasticsearch:
 
 #网站埋点数据库
 
-tracker-index: ${trackerIndex:openeuler_tracker}
+tracker-index: ${trackerindex:openeuler_tracker}
 tracker:
   host: ${teshost}
   username: ${tesusername}
