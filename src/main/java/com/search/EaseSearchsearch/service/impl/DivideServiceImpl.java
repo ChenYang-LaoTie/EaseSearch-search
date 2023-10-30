@@ -47,14 +47,12 @@ public class DivideServiceImpl implements DivideService {
         if (lang != null) {
             saveIndex = indexPrefix + "_" + lang;
         } else {
-            //在没有传语言时默认为zh
             saveIndex = indexPrefix + "_zh";
         }
         SearchRequest request = new SearchRequest(saveIndex);
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
         boolQueryBuilder.filter(QueryBuilders.termQuery("type" + ".keyword", category));
-
 
         int page = 1;
         int pageSize = 10;

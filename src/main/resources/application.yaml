@@ -1,10 +1,17 @@
-index-prefix: ${indexprefix:openeuler_test}
+index-prefix:
 
 elasticsearch:
-  host: ${eshost}
-  username: ${esusername}
-  password: ${espassword}
-  port: ${esport:9200}
+  host:
+  username:
+  password:
+  port:
+
+api:
+  mySystem:
+  allApi:
+  sigNameApi:
+  sigReadmeApi:
+  repoInfoApi:
 
 server:
   port: 8080

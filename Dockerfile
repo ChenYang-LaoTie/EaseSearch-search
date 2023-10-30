@@ -36,7 +36,7 @@ COPY --chown=easysearch --from=Builder /jre ${WORKSPACE}/jre
 
 ENV JAVA_HOME=${WORKSPACE}/jre
 ENV PATH=${JAVA_HOME}/bin:$PATH
-
+ENV LANG="C.UTF-8"
 ENV NO_ID_USER=anonymous
 
 EXPOSE 8080

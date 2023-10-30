@@ -159,8 +159,6 @@ public class SearchServiceImpl implements SearchService {
         if (StringUtils.hasText(condition.getType())) {
             boolQueryBuilder.filter(QueryBuilders.termQuery("type.keyword", condition.getType()));
         }
-        //因为会出现一些特殊的字符导致分词出错（比如英文连接词），在这里处理一下
-        condition.setKeyword(General.replacementCharacter(condition.getKeyword()));
 
         MatchPhraseQueryBuilder ptitleMP = QueryBuilders.matchPhraseQuery("title", condition.getKeyword()).analyzer("ik_max_word").slop(2);
         ptitleMP.boost(200);
@@ -237,9 +235,6 @@ public class SearchServiceImpl implements SearchService {
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
 
-        //因为会出现一些特殊的字符导致分词出错（比如英文连接词），在这里处理一下
-        condition.setKeyword(General.replacementCharacter(condition.getKeyword()));
-
         MatchPhraseQueryBuilder ptitleMP = QueryBuilders.matchPhraseQuery("title", condition.getKeyword()).analyzer("ik_max_word").slop(2);
         MatchPhraseQueryBuilder ptextContentMP = QueryBuilders.matchPhraseQuery("textContent", condition.getKeyword()).analyzer("ik_max_word").slop(2);
 
@@ -314,12 +309,9 @@ public class SearchServiceImpl implements SearchService {
     public Map<String, Object> advancedSearch(Map<String, String> search) throws Exception {
         String saveIndex;
         String lang = search.get("lang");
-        if (lang != null) {
-            saveIndex = indexPrefix + "_" + lang;
-        } else {
-            //在没有传语言时默认为zh
-            saveIndex = indexPrefix + "_zh";
-        }
+
+        saveIndex = indexPrefix + "_" + lang;
+
         SearchRequest request = new SearchRequest(saveIndex);
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
@@ -424,4 +416,5 @@ public class SearchServiceImpl implements SearchService {
         result.put("totalNum", numberList);
         return result;
     }
+
 }
